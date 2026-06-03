@@ -7,7 +7,6 @@ export default function SignUpPage() {
   const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' });
   const [loading, setLoading] = useState(false);
   const { register, googleLogin } = useAuth();
-  const [googleLoading, setGoogleLoading] = React.useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -27,7 +26,7 @@ export default function SignUpPage() {
   };
 
   const handleGoogleSignIn = async () => {
-    setGoogleLoading(true);
+    // setGoogleLoading(true);
     try {
       await googleLogin();
       toast.success('Welcome! 🎉');
@@ -38,9 +37,7 @@ export default function SignUpPage() {
       setGoogleLoading(false);
     }
   };
-  const _unused = () => {
-    toast('Google OAuth requires Google Cloud setup. Using demo mode.', { icon: 'ℹ️' });
-  };
+ 
 
   return (
     <div style={{ minHeight: '100vh', background: '#07070d', display: 'flex', position: 'relative', overflow: 'hidden' }}>

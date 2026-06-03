@@ -24,18 +24,20 @@ export default function SignInPage() {
     }
   };
 
-  const handleGoogle = async () => {
-    setGoogleLoading(true);
-    try {
-      await googleLogin();
-      toast.success('Welcome! 🎉');
-      navigate('/dashboard');
-    } catch (err) {
-      toast.error(err.message || 'Google sign-in failed');
-    } finally {
-      setGoogleLoading(false);
-    }
-  };
+ const handleGoogle = async () => {
+  setGoogleLoading(true);
+
+  try {
+    await googleLogin();
+    toast.success('Welcome! 🎉');
+    navigate('/dashboard');
+  } catch (err) {
+    console.error(err);
+    toast.error(err.message);
+  } finally {
+    setGoogleLoading(false);
+  }
+};
 
   const handleForgotPassword = async () => {
     if (!form.email) {
