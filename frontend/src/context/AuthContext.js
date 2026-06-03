@@ -64,32 +64,38 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (name, email, password) => {
-    const credential = await createUserWithEmailAndPassword(auth, email, password);
-    // Update display name in Firebase
-    await updateProfile(credential.user, { displayName: name });
-    const token = await credential.user.getIdToken(true);
-    // Sync name to backend
-    const res = await API.post('/auth/sync', { name }, {
-      headers: { Authorization: `Bearer ${token}` }
-    });
-    setUser(res.data.user);
-    return res.data;
+  const credential = await createUserWithEmailAndPassword(
+    auth,
+    email,
+    password
+  );
+
+  await updateProfile(credential.user, {
+    displayName: name
+  });
+
+  // Immediately sign out
+  await signOut(auth);
+
+  return {
+    success: true
   };
+};
 
   const googleLogin = async () => {
-    const credential = await signInWithPopup(auth, googleProvider);
-    const token = await credential.user.getIdToken();
-    // Sync name/avatar to backend
-    await API.post('/auth/sync', {
-      name: credential.user.displayName,
-      avatar: credential.user.photoURL
-    }, { headers: { Authorization: `Bearer ${token}` } });
-    const res = await API.get('/auth/me', {
-      headers: { Authorization: `Bearer ${token}` }
-    });
-    setUser(res.data.user);
-    return res.data;
-  };
+  const credential = await signInWithPopup(
+    auth,
+    googleProvider
+  );
+
+  setUser({
+    name: credential.user.displayName,
+    email: credential.user.email,
+    avatar: credential.user.photoURL
+  });
+
+  return credential.user;
+};
 
   const logout = async () => {
     await signOut(auth);
