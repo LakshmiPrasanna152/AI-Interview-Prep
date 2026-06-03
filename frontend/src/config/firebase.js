@@ -35,3 +35,4 @@ export {
   updateProfile,
   sendPasswordResetEmail
 };
+

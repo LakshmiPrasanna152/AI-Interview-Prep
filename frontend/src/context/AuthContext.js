@@ -14,8 +14,11 @@ import {
 import { onAuthStateChanged } from 'firebase/auth';
 
 const AuthContext = createContext();
-
-export const API = axios.create({ baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5000/api' });
+export const API = axios.create({
+  baseURL:
+    process.env.REACT_APP_API_URL ||
+    'https://ai-interview-prep-as7p.onrender.com/api'
+});
 
 // Attach Firebase ID token to every request
 API.interceptors.request.use(async (config) => {
