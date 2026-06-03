@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth, API } from '../context/AuthContext';
 import Sidebar from '../components/Sidebar';
-import { RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts';
+import { RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer } from 'recharts';
 
 const SESSION_TYPES = [
   { type: 'technical', label: 'Technical', icon: '💻', color: '#6c63ff', desc: 'DSA, Algorithms, CS Fundamentals' },

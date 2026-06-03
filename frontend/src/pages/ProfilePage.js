@@ -33,11 +33,12 @@ export default function ProfilePage() {
     if (passwords.new.length < 6) return toast.error('Password must be at least 6 characters');
     setChangingPw(true);
     try {
-      // Firebase handles password changes via email reset
-      throw new Error('Password changes are handled via Firebase. Use the reset password link on the sign-in page.');
-      toast.success('Password changed!');
-      setPasswords({ current: '', new: '', confirm: '' });
-    } catch (err) { toast.error(err.message || err.response?.data?.error || 'Password change failed'); }
+  throw new Error(
+    'Password changes are handled via Firebase. Use the reset password link on the sign-in page.'
+  );
+  toast.success('Password changed!');
+  setPasswords({ current: '', new: '', confirm: '' });
+} catch (err) { toast.error(err.message || err.response?.data?.error || 'Password change failed'); }
     finally { setChangingPw(false); }
   };
 

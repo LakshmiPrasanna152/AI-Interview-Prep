@@ -54,7 +54,7 @@ export default function ResumePage() {
 
   const ScoreArc = ({ score }) => {
     const pct = score / 100;
-    const r = 54; const cx = 64; const cy = 64;
+    const r = 54; 
     const circumference = Math.PI * r;
     const offset = circumference * (1 - pct);
     return (

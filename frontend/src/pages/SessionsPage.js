@@ -13,9 +13,9 @@ export default function SessionsPage() {
   const [filter, setFilter] = useState('all');
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchSessions();
-  }, [filter]);
+ useEffect(() => {
+  fetchSessions();
+}, [filter]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchSessions = async () => {
     setLoading(true);
