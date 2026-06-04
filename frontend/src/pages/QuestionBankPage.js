@@ -67,7 +67,7 @@ export default function QuestionBankPage() {
             </div>
           </div>
           <button onClick={generateQuestions} disabled={loading || !topic} style={{ background: loading ? '#4a4466' : '#6c63ff', color: 'white', border: 'none', padding: '12px 28px', borderRadius: 12, fontFamily: 'DM Sans', fontWeight: 700, cursor: loading || !topic ? 'not-allowed' : 'pointer', transition: 'all 0.2s', boxShadow: loading ? 'none' : '0 4px 16px rgba(108,99,255,0.4)' }}>
-            {loading ? '⏳ Generating...' : '✨ Generate 10 Questions'}
+            {loading ? '⏳ Generating...' : '✨ Generate  Questions'}
           </button>
         </div>
 
