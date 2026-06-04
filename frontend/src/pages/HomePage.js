@@ -10,12 +10,6 @@ const FEATURES = [
   { icon: '🏆', title: 'Question Bank', desc: 'Access thousands of curated questions across all domains and difficulty levels.' },
 ];
 
-const STATS = [
-  { value: '50K+', label: 'Students Prepared' },
-  { value: '1M+', label: 'Questions Practiced' },
-  { value: '92%', label: 'Success Rate' },
-  { value: '200+', label: 'Companies Covered' },
-];
 
 
 export default function HomePage() {
