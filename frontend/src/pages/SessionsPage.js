@@ -61,7 +61,7 @@ export default function SessionsPage() {
           </div>
         ) : sessions.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '80px 20px' }}>
-            <div style={{ fontSize: '3rem', marginBottom: 16 }}>📋</div>
+            <div style={{ fontSize: '3rem', marginBottom: 16 }}></div>
             <h3 style={{ fontFamily: 'Syne', fontWeight: 700, color: '#f0f0ff', marginBottom: 8 }}>No sessions yet</h3>
             <p style={{ color: '#8888aa', marginBottom: 24 }}>Start practicing to see your sessions here</p>
             <button onClick={() => navigate('/chat')} style={{ background: '#6c63ff', color: 'white', border: 'none', padding: '12px 28px', borderRadius: 12, fontFamily: 'DM Sans', fontWeight: 600, cursor: 'pointer' }}>Start First Session</button>
@@ -99,7 +99,7 @@ export default function SessionsPage() {
                   <button onClick={(e) => deleteSession(s._id, e)} style={{ background: 'transparent', border: 'none', color: '#555570', cursor: 'pointer', fontSize: '1rem', padding: '4px 8px', borderRadius: 6, transition: 'color 0.15s' }}
                     onMouseEnter={e => e.currentTarget.style.color = '#ff6b6b'}
                     onMouseLeave={e => e.currentTarget.style.color = '#555570'}>
-                    🗑
+                    
                   </button>
                 </div>
               </div>

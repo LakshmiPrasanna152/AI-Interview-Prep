@@ -121,7 +121,7 @@ export default function QuestionBankPage() {
           </div>
         ) : (
           <div style={{ textAlign: 'center', padding: '80px 20px' }}>
-            <div style={{ fontSize: '3rem', marginBottom: 16 }}>❓</div>
+            <div style={{ fontSize: '3rem', marginBottom: 16 }}></div>
             <h3 style={{ fontFamily: 'Syne', fontWeight: 700, color: '#f0f0ff', marginBottom: 8 }}>Select a topic and generate questions</h3>
             <p style={{ color: '#8888aa' }}>Choose a category, topic, and difficulty level to get started</p>
           </div>

@@ -82,9 +82,9 @@ export default function ProfilePage() {
         {/* Stats Cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 24 }}>
           {[
-            { label: 'Sessions', value: user?.stats?.totalSessions || 0, icon: '📋', color: '#6c63ff' },
-            { label: 'Questions', value: user?.stats?.totalQuestions || 0, icon: '❓', color: '#00d4aa' },
-            { label: 'Avg Score', value: `${user?.stats?.avgScore || 0}/10`, icon: '⭐', color: '#ffd93d' },
+            { label: 'Sessions', value: user?.stats?.totalSessions || 0, icon: '', color: '#6c63ff' },
+            { label: 'Questions', value: user?.stats?.totalQuestions || 0, icon: '', color: '#00d4aa' },
+            { label: 'Avg Score', value: `${user?.stats?.avgScore || 0}/10`, icon: '', color: '#ffd93d' },
           ].map(s => (
             <div key={s.label} style={{ background: '#12121f', border: '1px solid #1e1e35', borderRadius: 14, padding: '16px', textAlign: 'center' }}>
               <div style={{ fontSize: '1.4rem', marginBottom: 6 }}>{s.icon}</div>
