@@ -202,4 +202,106 @@ ${transcript.substring(0, 6000)}`;
   }
 });
 
+// POST /api/ai/generate-questions
+router.post('/generate-questions', protect, async (req, res) => {
+  try {
+    const { topic, difficulty = 'medium', count = 10, type = 'technical' } = req.body;
+    if (!topic) return res.status(400).json({ error: 'topic is required' });
+
+    const prompt = `Generate exactly ${count} interview questions for the following:
+- Category: ${type}
+- Topic: ${topic}
+- Difficulty: ${difficulty}
+
+Return ONLY a valid JSON array. No markdown, no extra text, no backticks.
+Each object must have:
+{
+  "question": "the full interview question",
+  "difficulty": "${difficulty}",
+  "hint": "a short hint to guide the candidate (1-2 sentences)",
+  "sampleAnswer": "a concise model answer (3-5 sentences)"
+}
+
+Example format:
+[{"question":"...","difficulty":"${difficulty}","hint":"...","sampleAnswer":"..."},...]`;
+
+    const raw = await callClaude(
+      [{ role: 'user', content: prompt }],
+      'You are an expert technical interviewer. Return only valid JSON arrays, no markdown, no explanation.'
+    );
+
+    let questions;
+    try {
+      const cleaned = raw.replace(/```json|```/g, '').trim();
+      questions = JSON.parse(cleaned);
+      if (!Array.isArray(questions)) throw new Error('Not an array');
+    } catch {
+      // Fallback: extract JSON array from response
+      const match = raw.match(/\[[\s\S]*\]/);
+      if (match) {
+        questions = JSON.parse(match[0]);
+      } else {
+        throw new Error('Could not parse questions from AI response');
+      }
+    }
+
+    res.json({ questions: questions.slice(0, count) });
+  } catch (err) {
+    console.error('Generate questions error:', err);
+    res.status(500).json({ error: err.message || 'Failed to generate questions' });
+  }
+});
+
+// POST /api/ai/analyze-resume
+router.post('/analyze-resume', protect, async (req, res) => {
+  try {
+    const { resumeText, targetRole = '' } = req.body;
+    if (!resumeText || !resumeText.trim()) return res.status(400).json({ error: 'resumeText is required' });
+
+    const roleContext = targetRole ? `The candidate is targeting: ${targetRole}.` : 'No specific target role provided.';
+
+    const prompt = `Analyze this resume and return a JSON object. ${roleContext}
+
+Resume:
+${resumeText.substring(0, 4000)}
+
+Return ONLY a valid JSON object with this exact structure. No markdown, no backticks, no extra text:
+{
+  "score": <number 0-100>,
+  "recommendation": "<2-3 sentence overall assessment and recommendation>",
+  "strengths": ["<strength 1>", "<strength 2>", "<strength 3>", "<strength 4>"],
+  "weaknesses": ["<gap 1>", "<gap 2>", "<gap 3>"],
+  "missingSkills": ["<skill 1>", "<skill 2>", "<skill 3>", "<skill 4>", "<skill 5>"],
+  "suggestedTopics": ["<topic 1>", "<topic 2>", "<topic 3>", "<topic 4>"],
+  "atsTips": ["<tip 1>", "<tip 2>", "<tip 3>", "<tip 4>", "<tip 5>", "<tip 6>"]
+}`;
+
+    const raw = await callClaude(
+      [{ role: 'user', content: prompt }],
+      'You are an expert resume reviewer and career coach. Return only valid JSON, no markdown, no explanation.'
+    );
+
+    let analysis;
+    try {
+      const cleaned = raw.replace(/```json|```/g, '').trim();
+      analysis = JSON.parse(cleaned);
+    } catch {
+      const match = raw.match(/\{[\s\S]*\}/);
+      if (match) {
+        analysis = JSON.parse(match[0]);
+      } else {
+        throw new Error('Could not parse analysis from AI response');
+      }
+    }
+
+    // Save analysis to user record
+    run('UPDATE users SET resume_analysis = ? WHERE id = ?', [JSON.stringify(analysis), req.user.id]);
+
+    res.json({ analysis });
+  } catch (err) {
+    console.error('Resume analysis error:', err);
+    res.status(500).json({ error: err.message || 'Failed to analyze resume' });
+  }
+});
+
 module.exports = router;

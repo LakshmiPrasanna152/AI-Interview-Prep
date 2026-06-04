@@ -64,6 +64,10 @@ const connectDB = async () => {
     }
 
     db.run(SCHEMA);
+
+    // Migrations: add columns if they don't exist yet
+    try { db.run("ALTER TABLE users ADD COLUMN resume_analysis TEXT DEFAULT ''"); } catch {}
+
     saveDB(); // initial save
 
     // Auto-save every 5 seconds
