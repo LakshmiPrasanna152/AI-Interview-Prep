@@ -93,15 +93,6 @@ export default function HomePage() {
             </button>
           </div>
 
-          {/* Stats */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 24, maxWidth: 640, margin: '0 auto', padding: '32px', background: 'rgba(14,14,26,0.8)', border: '1px solid #1e1e35', borderRadius: 20, backdropFilter: 'blur(10px)' }}>
-            {STATS.map(s => (
-              <div key={s.label} style={{ textAlign: 'center' }}>
-                <div style={{ fontFamily: 'Syne', fontWeight: 800, fontSize: '1.6rem', color: '#6c63ff' }}>{s.value}</div>
-                <div style={{ fontSize: '0.75rem', color: '#8888aa', marginTop: 4 }}>{s.label}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
