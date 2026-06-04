@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import { ThemeProvider } from './context/ThemeContext';
 import HomePage from './pages/HomePage';
 import SignUpPage from './pages/SignUpPage';
 import SignInPage from './pages/SignInPage';
@@ -35,7 +34,7 @@ const PublicRoute = ({ children }) => {
 
 export default function App() {
   return (
-    <ThemeProvider>
+    
     <AuthProvider>
       <BrowserRouter>
         <Toaster
@@ -61,6 +60,6 @@ export default function App() {
         </Routes>
       </BrowserRouter>
     </AuthProvider>
-    </ThemeProvider>
+  
   );
 }
