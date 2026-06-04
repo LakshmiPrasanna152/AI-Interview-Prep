@@ -60,14 +60,14 @@ export default function QuestionBankPage() {
             <div>
               <label style={{ display: 'block', color: '#8888aa', fontSize: '0.8rem', marginBottom: 8, fontFamily: 'Space Mono' }}>DIFFICULTY</label>
               <select value={difficulty} onChange={e => setDifficulty(e.target.value)} className="input-field">
-                <option value="easy">🟢 Easy</option>
-                <option value="medium">🟡 Medium</option>
-                <option value="hard">🔴 Hard</option>
+                <option value="easy"> Easy</option>
+                <option value="medium"> Medium</option>
+                <option value="hard"> Hard</option>
               </select>
             </div>
           </div>
           <button onClick={generateQuestions} disabled={loading || !topic} style={{ background: loading ? '#4a4466' : '#6c63ff', color: 'white', border: 'none', padding: '12px 28px', borderRadius: 12, fontFamily: 'DM Sans', fontWeight: 700, cursor: loading || !topic ? 'not-allowed' : 'pointer', transition: 'all 0.2s', boxShadow: loading ? 'none' : '0 4px 16px rgba(108,99,255,0.4)' }}>
-            {loading ? '⏳ Generating...' : '✨ Generate  Questions'}
+            {loading ? '⏳ Generating...' : ' Generate  Questions'}
           </button>
         </div>
 
@@ -81,7 +81,7 @@ export default function QuestionBankPage() {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
               <h3 style={{ fontFamily: 'Syne', fontWeight: 700, color: '#f0f0ff' }}>{questions.length} Questions — {topic}</h3>
               <button onClick={() => navigate(`/chat?type=${category}`)} style={{ background: 'rgba(0,212,170,0.15)', border: '1px solid rgba(0,212,170,0.3)', color: '#00d4aa', padding: '8px 16px', borderRadius: 10, fontFamily: 'DM Sans', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer' }}>
-                🤖 Practice with AI →
+                 Practice with AI →
               </button>
             </div>
             <div style={{ display: 'grid', gap: 12 }}>
@@ -103,13 +103,13 @@ export default function QuestionBankPage() {
                     <div style={{ padding: '0 24px 20px', borderTop: '1px solid #1e1e35', animation: 'fadeIn 0.2s ease-out' }}>
                       {q.hint && (
                         <div style={{ background: 'rgba(108,99,255,0.1)', border: '1px solid rgba(108,99,255,0.2)', borderRadius: 10, padding: '12px 16px', marginTop: 16, marginBottom: 12 }}>
-                          <div style={{ fontFamily: 'Space Mono', fontSize: '0.7rem', color: '#6c63ff', marginBottom: 6 }}>💡 HINT</div>
+                          <div style={{ fontFamily: 'Space Mono', fontSize: '0.7rem', color: '#6c63ff', marginBottom: 6 }}> HINT</div>
                           <p style={{ color: '#c0c0d8', fontSize: '0.9rem', lineHeight: 1.6 }}>{q.hint}</p>
                         </div>
                       )}
                       {q.sampleAnswer && (
                         <div style={{ background: 'rgba(0,212,170,0.08)', border: '1px solid rgba(0,212,170,0.2)', borderRadius: 10, padding: '12px 16px' }}>
-                          <div style={{ fontFamily: 'Space Mono', fontSize: '0.7rem', color: '#00d4aa', marginBottom: 6 }}>✅ SAMPLE ANSWER</div>
+                          <div style={{ fontFamily: 'Space Mono', fontSize: '0.7rem', color: '#00d4aa', marginBottom: 6 }}> SAMPLE ANSWER</div>
                           <p style={{ color: '#c0c0d8', fontSize: '0.9rem', lineHeight: 1.6 }}>{q.sampleAnswer}</p>
                         </div>
                       )}

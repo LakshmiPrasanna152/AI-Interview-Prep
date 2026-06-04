@@ -5,11 +5,11 @@ import Sidebar from '../components/Sidebar';
 import { RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer } from 'recharts';
 
 const SESSION_TYPES = [
-  { type: 'technical', label: 'Technical', icon: '💻', color: '#6c63ff', desc: 'DSA, Algorithms, CS Fundamentals' },
-  { type: 'hr', label: 'HR Interview', icon: '🤝', color: '#00d4aa', desc: 'Behavioral & Cultural Fit' },
-  { type: 'system-design', label: 'System Design', icon: '🏗️', color: '#ff6b6b', desc: 'Architecture & Scalability' },
-  { type: 'behavioral', label: 'Behavioral', icon: '🎯', color: '#ffd93d', desc: 'STAR Method Practice' },
-  { type: 'mock', label: 'Full Mock', icon: '🎭', color: '#a78bfa', desc: 'Complete Simulation' },
+  { type: 'technical', label: 'Technical', icon: '', color: '#6c63ff', desc: 'DSA, Algorithms, CS Fundamentals' },
+  { type: 'hr', label: 'HR Interview', icon: '', color: '#00d4aa', desc: 'Behavioral & Cultural Fit' },
+  { type: 'system-design', label: 'System Design', icon: '', color: '#ff6b6b', desc: 'Architecture & Scalability' },
+  { type: 'behavioral', label: 'Behavioral', icon: '', color: '#ffd93d', desc: 'STAR Method Practice' },
+  { type: 'mock', label: 'Full Mock', icon: '', color: '#a78bfa', desc: 'Complete Simulation' },
 ];
 
 export default function DashboardPage() {
@@ -56,7 +56,7 @@ export default function DashboardPage() {
             DASHBOARD
           </div>
           <h1 style={{ fontFamily: 'Syne', fontWeight: 800, fontSize: '2rem', color: '#f0f0ff' }}>
-            Good {new Date().getHours() < 12 ? 'Morning' : new Date().getHours() < 17 ? 'Afternoon' : 'Evening'}, {user?.name?.split(' ')[0] || 'there'} 👋
+            Good {new Date().getHours() < 12 ? 'Morning' : new Date().getHours() < 17 ? 'Afternoon' : 'Evening'}, {user?.name?.split(' ')[0] || 'there'} 
           </h1>
           <p style={{ color: '#8888aa', marginTop: 6 }}>Ready to ace your next interview? Let's practice!</p>
         </div>
@@ -64,10 +64,10 @@ export default function DashboardPage() {
         {/* Stats Row */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16, marginBottom: 32 }}>
           {[
-            { label: 'Total Sessions', value: stats?.total || 0, icon: '📋', color: '#6c63ff' },
-            { label: 'Completed', value: stats?.completed || 0, icon: '✅', color: '#00d4aa' },
-            { label: 'Avg Score', value: `${stats?.avgScore || 0}/10`, icon: '⭐', color: '#ffd93d' },
-            { label: 'Questions Done', value: user?.stats?.totalQuestions || 0, icon: '❓', color: '#ff6b6b' },
+            { label: 'Total Sessions', value: stats?.total || 0, icon: '', color: '#6c63ff' },
+            { label: 'Completed', value: stats?.completed || 0, icon: '', color: '#00d4aa' },
+            { label: 'Avg Score', value: `${stats?.avgScore || 0}/10`, icon: '', color: '#ffd93d' },
+            { label: 'Questions Done', value: user?.stats?.totalQuestions || 0, icon: '', color: '#ff6b6b' },
           ].map(s => (
             <div key={s.label} style={{ background: '#12121f', border: '1px solid #1e1e35', borderRadius: 16, padding: '20px', display: 'flex', alignItems: 'center', gap: 16 }}>
               <div style={{ width: 48, height: 48, background: `${s.color}22`, borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem' }}>{s.icon}</div>
@@ -81,7 +81,7 @@ export default function DashboardPage() {
 
         {/* Start Interview Section */}
         <div style={{ background: '#12121f', border: '1px solid #1e1e35', borderRadius: 20, padding: '28px', marginBottom: 32 }}>
-          <h2 style={{ fontFamily: 'Syne', fontWeight: 700, fontSize: '1.2rem', color: '#f0f0ff', marginBottom: 6 }}>🚀 Start a New Interview</h2>
+          <h2 style={{ fontFamily: 'Syne', fontWeight: 700, fontSize: '1.2rem', color: '#f0f0ff', marginBottom: 6 }}> Start a New Interview</h2>
           <p style={{ color: '#8888aa', fontSize: '0.9rem', marginBottom: 20 }}>Choose your interview type and dive in</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 12 }}>
             {SESSION_TYPES.map(t => (
@@ -113,7 +113,7 @@ export default function DashboardPage() {
           {/* Daily Tip */}
           <div style={{ background: 'linear-gradient(135deg, #12122a, #1a1a3a)', border: '1px solid #6c63ff33', borderRadius: 20, padding: '24px', display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-              <h3 style={{ fontFamily: 'Syne', fontWeight: 700, color: '#f0f0ff' }}>💡 AI Tip of the Day</h3>
+              <h3 style={{ fontFamily: 'Syne', fontWeight: 700, color: '#f0f0ff' }}> AI Tip of the Day</h3>
               <button onClick={fetchTip} style={{ background: 'rgba(108,99,255,0.2)', border: 'none', color: '#6c63ff', padding: '6px 12px', borderRadius: 8, fontFamily: 'DM Sans', fontSize: '0.8rem', cursor: 'pointer' }}>New tip</button>
             </div>
             {loadingTip ? (
@@ -138,7 +138,7 @@ export default function DashboardPage() {
                 onMouseEnter={e => e.currentTarget.style.background = '#1a1a2e'}
                 onMouseLeave={e => e.currentTarget.style.background = '#0e0e1a'}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <span style={{ fontSize: '1.2rem' }}>{SESSION_TYPES.find(t => t.type === s.type)?.icon || '📋'}</span>
+                  <span style={{ fontSize: '1.2rem' }}>{SESSION_TYPES.find(t => t.type === s.type)?.icon || ''}</span>
                   <div>
                     <div style={{ fontFamily: 'DM Sans', fontWeight: 500, color: '#f0f0ff', fontSize: '0.9rem' }}>{s.title}</div>
                     <div style={{ color: '#555570', fontSize: '0.75rem' }}>{new Date(s.createdAt).toLocaleDateString()}</div>

@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const FEATURES = [
-  { icon: '🤖', title: 'AI-Powered Interviews', desc: 'Claude AI conducts realistic mock interviews tailored to your target role and experience level.' },
-  { icon: '📊', title: 'Real-time Feedback', desc: 'Get instant scores, detailed feedback, and model answers after every response.' },
-  { icon: '📄', title: 'Resume Analysis', desc: 'Upload your resume for AI-powered gap analysis and personalized question suggestions.' },
-  { icon: '🎯', title: 'Multiple Interview Types', desc: 'Technical, HR, Behavioral, System Design, and Full Mock interviews available.' },
-  { icon: '📈', title: 'Progress Tracking', desc: 'Track your improvement over time with detailed analytics and performance history.' },
-  { icon: '🏆', title: 'Question Bank', desc: 'Access thousands of curated questions across all domains and difficulty levels.' },
+  { icon: '', title: 'AI-Powered Interviews', desc: 'Claude AI conducts realistic mock interviews tailored to your target role and experience level.' },
+  { icon: '', title: 'Real-time Feedback', desc: 'Get instant scores, detailed feedback, and model answers after every response.' },
+  { icon: '', title: 'Resume Analysis', desc: 'Upload your resume for AI-powered gap analysis and personalized question suggestions.' },
+  { icon: '', title: 'Multiple Interview Types', desc: 'Technical, HR, Behavioral, System Design, and Full Mock interviews available.' },
+  { icon: '', title: 'Progress Tracking', desc: 'Track your improvement over time with detailed analytics and performance history.' },
+  { icon: '', title: 'Question Bank', desc: 'Access thousands of curated questions across all domains and difficulty levels.' },
 ];
 
 
@@ -86,7 +86,7 @@ export default function HomePage() {
 
           <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 64 }}>
             <button onClick={() => navigate('/signup')} style={{ background: '#6c63ff', color: 'white', padding: '16px 40px', borderRadius: 14, fontFamily: 'DM Sans', fontWeight: 700, fontSize: '1.05rem', cursor: 'pointer', border: 'none', boxShadow: '0 8px 32px rgba(108,99,255,0.5)', transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: 10 }}>
-              🚀 Start Practicing Free
+               Start Practicing Free
             </button>
             <button onClick={() => navigate('/signin')} style={{ background: 'transparent', color: '#f0f0ff', padding: '16px 40px', borderRadius: 14, fontFamily: 'DM Sans', fontWeight: 500, fontSize: '1.05rem', cursor: 'pointer', border: '1px solid #2d2d52', transition: 'all 0.2s' }}>
               Sign In
@@ -125,11 +125,11 @@ export default function HomePage() {
           <p style={{ color: '#8888aa', fontSize: '1.1rem', marginBottom: 64 }}>Specialized AI interviewers for every scenario</p>
           <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
             {[
-              { label: 'Technical', icon: '💻', color: '#6c63ff', desc: 'DSA, Coding, CS fundamentals' },
-              { label: 'HR', icon: '🤝', color: '#00d4aa', desc: 'Behavioral & cultural fit' },
-              { label: 'System Design', icon: '🏗️', color: '#ff6b6b', desc: 'Architecture & scalability' },
-              { label: 'Behavioral', icon: '🎯', color: '#ffd93d', desc: 'STAR method practice' },
-              { label: 'Mock Interview', icon: '🎭', color: '#a78bfa', desc: 'Full realistic simulation' },
+              { label: 'Technical', icon: '', color: '#6c63ff', desc: 'DSA, Coding, CS fundamentals' },
+              { label: 'HR', icon: '', color: '#00d4aa', desc: 'Behavioral & cultural fit' },
+              { label: 'System Design', icon: '', color: '#ff6b6b', desc: 'Architecture & scalability' },
+              { label: 'Behavioral', icon: '', color: '#ffd93d', desc: 'STAR method practice' },
+              { label: 'Mock Interview', icon: '', color: '#a78bfa', desc: 'Full realistic simulation' },
             ].map(t => (
               <div key={t.label} onClick={() => navigate('/signup')} style={{ background: '#12121f', border: `1px solid ${t.color}33`, borderRadius: 16, padding: '24px 32px', cursor: 'pointer', transition: 'all 0.2s', minWidth: 180, flex: '0 1 auto' }}
                 onMouseEnter={e => { e.currentTarget.style.background = `${t.color}11`; e.currentTarget.style.transform = 'scale(1.04)'; }}
@@ -152,7 +152,7 @@ export default function HomePage() {
           </h2>
           <p style={{ color: '#8888aa', fontSize: '1.1rem', marginBottom: 40 }}>Join thousands of students who've already aced their interviews with AI coaching.</p>
           <button onClick={() => navigate('/signup')} style={{ background: 'linear-gradient(135deg, #6c63ff, #00d4aa)', color: 'white', padding: '18px 48px', borderRadius: 16, fontFamily: 'DM Sans', fontWeight: 700, fontSize: '1.1rem', cursor: 'pointer', border: 'none', boxShadow: '0 12px 40px rgba(108,99,255,0.4)', transition: 'all 0.2s' }}>
-            Start For Free — No Credit Card
+            Start For Free 
           </button>
         </div>
       </section>

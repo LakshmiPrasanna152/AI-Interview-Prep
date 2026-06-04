@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 
 const NAV_ITEMS = [
   { path: '/dashboard', icon: '⊞', label: 'Dashboard' },
@@ -13,6 +14,7 @@ const NAV_ITEMS = [
 
 export default function Sidebar() {
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -20,14 +22,35 @@ export default function Sidebar() {
     navigate('/');
   };
 
+  const isDark = theme === 'dark';
+
   return (
-    <aside style={{ width: 240, background: '#0a0a14', borderRight: '1px solid #1e1e35', display: 'flex', flexDirection: 'column', height: '100vh', position: 'sticky', top: 0, flexShrink: 0 }}>
+    <aside style={{ width: 240, background: isDark ? '#0a0a14' : '#ffffff', borderRight: `1px solid ${isDark ? '#1e1e35' : '#d8d8ec'}`, display: 'flex', flexDirection: 'column', height: '100vh', position: 'sticky', top: 0, flexShrink: 0 }}>
       {/* Logo */}
-      <div style={{ padding: '24px 20px 20px', borderBottom: '1px solid #1e1e35' }}>
-        <div style={{ fontFamily: 'Syne', fontWeight: 800, fontSize: '1.3rem', color: '#f0f0ff' }}>
-          <span style={{ color: '#6c63ff' }}>Interview</span>AI
+      <div style={{ padding: '24px 20px 20px', borderBottom: `1px solid ${isDark ? '#1e1e35' : '#d8d8ec'}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div>
+          <div style={{ fontFamily: 'Syne', fontWeight: 800, fontSize: '1.3rem', color: isDark ? '#f0f0ff' : '#0e0e20' }}>
+            <span style={{ color: '#6c63ff' }}>Interview</span>AI
+          </div>
+          <div style={{ fontFamily: 'Space Mono', fontSize: '0.65rem', color: isDark ? '#555570' : '#9090bb', marginTop: 4 }}>Powered by Claude</div>
         </div>
-        <div style={{ fontFamily: 'Space Mono', fontSize: '0.65rem', color: '#555570', marginTop: 4 }}>Powered by Claude</div>
+
+        {/* Theme Toggle Button */}
+        <button
+          onClick={toggleTheme}
+          title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          style={{
+            width: 36, height: 36, borderRadius: 10, border: `1px solid ${isDark ? '#2d2d52' : '#d8d8ec'}`,
+            background: isDark ? '#12121f' : '#f0f0fa', cursor: 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '1rem', transition: 'all 0.2s', flexShrink: 0,
+            boxShadow: isDark ? 'none' : '0 2px 8px rgba(0,0,0,0.08)'
+          }}
+          onMouseEnter={e => { e.currentTarget.style.background = isDark ? '#1e1e35' : '#e4e4f4'; e.currentTarget.style.transform = 'scale(1.08)'; }}
+          onMouseLeave={e => { e.currentTarget.style.background = isDark ? '#12121f' : '#f0f0fa'; e.currentTarget.style.transform = 'scale(1)'; }}
+        >
+          {isDark ? '☀️' : '🌙'}
+        </button>
       </div>
 
       {/* Nav */}

@@ -136,7 +136,7 @@ export default function ProfilePage() {
               </div>
             </div>
             <button onClick={saveProfile} disabled={saving} style={{ background: saving ? '#4a4466' : '#6c63ff', color: 'white', border: 'none', padding: '13px 32px', borderRadius: 12, fontFamily: 'DM Sans', fontWeight: 700, cursor: saving ? 'not-allowed' : 'pointer', transition: 'all 0.2s', boxShadow: saving ? 'none' : '0 6px 20px rgba(108,99,255,0.4)' }}>
-              {saving ? '⏳ Saving...' : '💾 Save Profile'}
+              {saving ? '⏳ Saving...' : ' Save Profile'}
             </button>
           </div>
         )}
@@ -152,7 +152,7 @@ export default function ProfilePage() {
                 </div>
               ))}
               <button onClick={changePassword} disabled={changingPw} style={{ background: changingPw ? '#4a4466' : '#6c63ff', color: 'white', border: 'none', padding: '13px 24px', borderRadius: 12, fontFamily: 'DM Sans', fontWeight: 700, cursor: changingPw ? 'not-allowed' : 'pointer', transition: 'all 0.2s', marginTop: 8 }}>
-                {changingPw ? '⏳ Changing...' : '🔐 Change Password'}
+                {changingPw ? '⏳ Changing...' : ' Change Password'}
               </button>
             </div>
           </div>

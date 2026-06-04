@@ -15,7 +15,7 @@ export default function SignInPage() {
     setLoading(true);
     try {
       await login(form.email, form.password);
-      toast.success('Welcome back! 👋');
+      toast.success('Welcome back! ');
       navigate('/dashboard');
     } catch (err) {
       toast.error(err.message || 'Login failed. Check your credentials.');
@@ -29,7 +29,7 @@ export default function SignInPage() {
 
   try {
     await googleLogin();
-    toast.success('Welcome! 🎉');
+    toast.success('Welcome! ');
     navigate('/dashboard');
   } catch (err) {
     console.error(err);

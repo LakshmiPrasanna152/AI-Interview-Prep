@@ -79,7 +79,7 @@ export default function ResumePage() {
 
         {/* Tabs */}
         <div style={{ display: 'flex', gap: 4, background: '#12121f', border: '1px solid #1e1e35', borderRadius: 12, padding: 4, marginBottom: 28, width: 'fit-content' }}>
-          {[['upload','📄 Upload Resume'],['results','📊 Analysis Results']].map(([t,l]) => (
+          {[['upload',' Upload Resume'],['results',' Analysis Results']].map(([t,l]) => (
             <button key={t} onClick={() => setTab(t)} style={{ padding: '9px 20px', borderRadius: 10, border: 'none', fontFamily: 'DM Sans', fontWeight: 600, fontSize: '0.875rem', cursor: 'pointer', background: tab === t ? '#6c63ff' : 'transparent', color: tab === t ? 'white' : '#8888aa', transition: 'all 0.2s' }}>
               {l}
             </button>
@@ -117,10 +117,10 @@ export default function ResumePage() {
 
             <div style={{ display: 'flex', gap: 12 }}>
               <button onClick={handleTextUpload} disabled={uploading} style={{ background: '#12121f', border: '1px solid #2d2d52', color: '#f0f0ff', padding: '13px 24px', borderRadius: 12, fontFamily: 'DM Sans', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s' }}>
-                💾 Save Resume
+                Save Resume
               </button>
               <button onClick={analyzeResume} disabled={analyzing || !resumeText.trim()} style={{ background: analyzing ? '#4a4466' : 'linear-gradient(135deg, #6c63ff, #00d4aa)', color: 'white', border: 'none', padding: '13px 32px', borderRadius: 12, fontFamily: 'DM Sans', fontWeight: 700, cursor: analyzing ? 'not-allowed' : 'pointer', boxShadow: analyzing ? 'none' : '0 6px 24px rgba(108,99,255,0.4)', transition: 'all 0.2s' }}>
-                {analyzing ? '⏳ Analyzing with AI...' : '✨ Analyze Resume'}
+                {analyzing ? '⏳ Analyzing with AI...' : ' Analyze Resume'}
               </button>
             </div>
           </div>
@@ -143,7 +143,7 @@ export default function ResumePage() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
               {/* Strengths */}
               <div style={{ background: '#12121f', border: '1px solid #00d4aa33', borderRadius: 16, padding: '20px' }}>
-                <h4 style={{ fontFamily: 'Syne', fontWeight: 700, color: '#00d4aa', marginBottom: 14, display: 'flex', alignItems: 'center', gap: 8 }}>✅ Strengths</h4>
+                <h4 style={{ fontFamily: 'Syne', fontWeight: 700, color: '#00d4aa', marginBottom: 14, display: 'flex', alignItems: 'center', gap: 8 }}>Strengths</h4>
                 {(analysis.strengths || []).map((s, i) => (
                   <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 8, color: '#c0c0d8', fontSize: '0.875rem', lineHeight: 1.5 }}>
                     <span style={{ color: '#00d4aa', flexShrink: 0 }}>•</span>{s}
@@ -152,7 +152,7 @@ export default function ResumePage() {
               </div>
               {/* Weaknesses */}
               <div style={{ background: '#12121f', border: '1px solid #ff6b6b33', borderRadius: 16, padding: '20px' }}>
-                <h4 style={{ fontFamily: 'Syne', fontWeight: 700, color: '#ff6b6b', marginBottom: 14 }}>⚠️ Gaps & Weaknesses</h4>
+                <h4 style={{ fontFamily: 'Syne', fontWeight: 700, color: '#ff6b6b', marginBottom: 14 }}> Gaps & Weaknesses</h4>
                 {(analysis.weaknesses || []).map((s, i) => (
                   <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 8, color: '#c0c0d8', fontSize: '0.875rem', lineHeight: 1.5 }}>
                     <span style={{ color: '#ff6b6b', flexShrink: 0 }}>•</span>{s}
@@ -164,7 +164,7 @@ export default function ResumePage() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
               {/* Missing Skills */}
               <div style={{ background: '#12121f', border: '1px solid #ffd93d33', borderRadius: 16, padding: '20px' }}>
-                <h4 style={{ fontFamily: 'Syne', fontWeight: 700, color: '#ffd93d', marginBottom: 14 }}>🎯 Missing Skills</h4>
+                <h4 style={{ fontFamily: 'Syne', fontWeight: 700, color: '#ffd93d', marginBottom: 14 }}> Missing Skills</h4>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                   {(analysis.missingSkills || []).map((s, i) => (
                     <span key={i} style={{ background: '#ffd93d22', border: '1px solid #ffd93d44', color: '#ffd93d', padding: '4px 12px', borderRadius: 20, fontSize: '0.8rem', fontFamily: 'Space Mono' }}>{s}</span>
@@ -173,7 +173,7 @@ export default function ResumePage() {
               </div>
               {/* Suggested Interview Topics */}
               <div style={{ background: '#12121f', border: '1px solid #6c63ff33', borderRadius: 16, padding: '20px' }}>
-                <h4 style={{ fontFamily: 'Syne', fontWeight: 700, color: '#6c63ff', marginBottom: 14 }}>📚 Practice These Topics</h4>
+                <h4 style={{ fontFamily: 'Syne', fontWeight: 700, color: '#6c63ff', marginBottom: 14 }}> Practice These Topics</h4>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                   {(analysis.suggestedTopics || []).map((t, i) => (
                     <span key={i} style={{ background: 'rgba(108,99,255,0.15)', border: '1px solid rgba(108,99,255,0.3)', color: '#6c63ff', padding: '4px 12px', borderRadius: 20, fontSize: '0.8rem', fontFamily: 'Space Mono' }}>{t}</span>
@@ -184,7 +184,7 @@ export default function ResumePage() {
 
             {/* ATS Tips */}
             <div style={{ background: '#12121f', border: '1px solid #1e1e35', borderRadius: 16, padding: '20px', marginBottom: 20 }}>
-              <h4 style={{ fontFamily: 'Syne', fontWeight: 700, color: '#f0f0ff', marginBottom: 14 }}>🤖 ATS Optimization Tips</h4>
+              <h4 style={{ fontFamily: 'Syne', fontWeight: 700, color: '#f0f0ff', marginBottom: 14 }}> ATS Optimization Tips</h4>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
                 {(analysis.atsTips || []).map((t, i) => (
                   <div key={i} style={{ display: 'flex', gap: 8, color: '#c0c0d8', fontSize: '0.875rem', lineHeight: 1.5 }}>
@@ -202,7 +202,7 @@ export default function ResumePage() {
 
         {tab === 'results' && !analysis && (
           <div style={{ textAlign: 'center', padding: '80px 20px' }}>
-            <div style={{ fontSize: '3rem', marginBottom: 16 }}>📊</div>
+            <div style={{ fontSize: '3rem', marginBottom: 16 }}></div>
             <h3 style={{ fontFamily: 'Syne', fontWeight: 700, color: '#f0f0ff', marginBottom: 8 }}>No analysis yet</h3>
             <p style={{ color: '#8888aa', marginBottom: 20 }}>Upload your resume and run an analysis first</p>
             <button onClick={() => setTab('upload')} style={{ background: '#6c63ff', color: 'white', border: 'none', padding: '12px 24px', borderRadius: 12, fontFamily: 'DM Sans', fontWeight: 600, cursor: 'pointer' }}>

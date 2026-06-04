@@ -4,7 +4,7 @@ import { API } from '../context/AuthContext';
 import Sidebar from '../components/Sidebar';
 import toast from 'react-hot-toast';
 
-const TYPE_ICONS = { technical:'💻', hr:'🤝', 'system-design':'🏗️', behavioral:'🎯', mock:'🎭', custom:'⚙️' };
+const TYPE_ICONS = { technical:'', hr:'', 'system-design':'', behavioral:'', mock:'', custom:'' };
 const TYPE_COLORS = { technical:'#6c63ff', hr:'#00d4aa', 'system-design':'#ff6b6b', behavioral:'#ffd93d', mock:'#a78bfa', custom:'#888' };
 
 export default function SessionsPage() {
@@ -74,7 +74,7 @@ export default function SessionsPage() {
                 onMouseLeave={e => { e.currentTarget.style.borderColor = '#1e1e35'; e.currentTarget.style.transform = 'none'; }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                   <div style={{ width: 48, height: 48, borderRadius: 12, background: `${TYPE_COLORS[s.type] || '#6c63ff'}22`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem' }}>
-                    {TYPE_ICONS[s.type] || '📋'}
+                    {TYPE_ICONS[s.type] || ''}
                   </div>
                   <div>
                     <div style={{ fontFamily: 'Syne', fontWeight: 700, color: '#f0f0ff', marginBottom: 4 }}>{s.title}</div>

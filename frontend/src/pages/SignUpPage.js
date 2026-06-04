@@ -95,7 +95,7 @@ navigate('/signin');
               <input className="input-field" type="password" placeholder="Repeat password" value={form.confirm} onChange={e => setForm(p => ({ ...p, confirm: e.target.value }))} required />
             </div>
             <button type="submit" disabled={loading} style={{ background: loading ? '#4a4466' : '#6c63ff', color: 'white', padding: '15px', borderRadius: 12, border: 'none', fontFamily: 'DM Sans', fontWeight: 700, fontSize: '1rem', cursor: loading ? 'not-allowed' : 'pointer', marginTop: 8, transition: 'all 0.2s', boxShadow: loading ? 'none' : '0 8px 24px rgba(108,99,255,0.4)' }}>
-              {loading ? '⏳ Creating account...' : '🚀 Create Account'}
+              {loading ? '⏳ Creating account...' : ' Create Account'}
             </button>
           </form>
 
@@ -112,10 +112,10 @@ navigate('/signin');
         <div style={{ position: 'relative' }}>
           <div style={{ fontFamily: 'Space Mono', color: '#6c63ff', fontSize: '0.75rem', marginBottom: 32, letterSpacing: 2 }}>WHY INTERVIEWAI?</div>
           {[
-            ['🎯', 'Personalized to your role', 'Tailored questions for your target position and experience level'],
-            ['⚡', 'Instant AI feedback', 'Get scored and reviewed after every single answer'],
-            ['📈', 'Track your progress', 'See improvement over time with detailed analytics'],
-            ['🏆', 'Proven results', '92% of users report improved interview confidence'],
+            ['', 'Personalized to your role', 'Tailored questions for your target position and experience level'],
+            ['', 'Instant AI feedback', 'Get scored and reviewed after every single answer'],
+            ['', 'Track your progress', 'See improvement over time with detailed analytics'],
+            ['', 'Proven results', '92% of users report improved interview confidence'],
           ].map(([icon, title, desc]) => (
             <div key={title} style={{ display: 'flex', gap: 16, marginBottom: 28, alignItems: 'flex-start' }}>
               <div style={{ width: 44, height: 44, background: 'rgba(108,99,255,0.15)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', flexShrink: 0 }}>{icon}</div>
